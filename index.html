@@ -56,19 +56,19 @@
 
     window.addEventListener('devicemotion', function (eventData) {
         document.getElementById("dmAcceleration").innerHTML = "[" +
-        round(eventData.acceleration.x) + ", " +
-        round(eventData.acceleration.y) + ", " +
-        round(eventData.acceleration.z) + "]";
+        Math.round(eventData.acceleration.x) + ", " +
+        Math.round(eventData.acceleration.y) + ", " +
+        Math.round(eventData.acceleration.z) + "]";
 
         document.getElementById("dmAccelerationIncludingGravity").innerHTML = "[" +
-        round(eventData.accelerationIncludingGravity.x) + ", " +
-        round(eventData.accelerationIncludingGravity.y) + ", " +
-        round(eventData.accelerationIncludingGravity.z) + "]";
+        Math.round(eventData.accelerationIncludingGravity.x) + ", " +
+        Math.round(eventData.accelerationIncludingGravity.y) + ", " +
+        Math.round(eventData.accelerationIncludingGravity.z) + "]";
 
         document.getElementById("dmRotationRate").innerHTML = "[" +
-        round(eventData.rotationRate.alpha) + ", " +
-        round(eventData.rotationRate.beta) + ", " +
-        round(eventData.rotationRate.gamma) + "]";
+        Math.round(eventData.rotationRate.alpha) + ", " +
+        Math.round(eventData.rotationRate.beta) + ", " +
+        Math.round(eventData.rotationRate.gamma) + "]";
 
         document.getElementById("dmInterval").innerHTML = eventData.interval;
 
