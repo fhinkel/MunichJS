@@ -44,10 +44,6 @@
 </div>
 
 <script type="text/javascript">
-    var round = function(x) {
-        return Math.round(x*10) / 10;
-    };
-
     window.addEventListener('deviceorientation', function (eventData) {
         document.getElementById("doTiltLR").innerHTML = Math.round(eventData.gamma);
         document.getElementById("doTiltFB").innerHTML = Math.round(eventData.beta);
