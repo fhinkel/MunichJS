@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MunichJS</title>
+</head>
+<body>
+<div class="main">
+    <h2>Device Orientation</h2>
+    <table>
+        <tr>
+            <td>Tilt Left/Right [gamma]</td>
+            <td id="doTiltLR"></td>
+        </tr>
+        <tr>
+            <td>Tilt Front/Back [beta]</td>
+            <td id="doTiltFB"></td>
+        </tr>
+        <tr>
+            <td>Direction [alpha]</td>
+            <td id="doDirection"></td>
+        </tr>
+    </table>
+
+    <h2>Device Motion</h2>
+    <table>
+        <tr>
+            <td>Acceleration</td>
+            <td id="dmAcceleration"></td>
+        </tr>
+        <tr>
+            <td>AccelerationIncludingGravity</td>
+            <td id="dmAccelerationIncludingGravity"></td>
+        </tr>
+        <tr>
+            <td>RotationRate</td>
+            <td id="dmRotationRate"></td>
+        </tr>
+        <tr>
+            <td>Interval</td>
+            <td id="dmInterval"></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    var round = function(x) {
+        return Math.round(x*10) / 10;
+    };
+
+    window.addEventListener('deviceorientation', function (eventData) {
+        document.getElementById("doTiltLR").innerHTML = Math.round(eventData.gamma);
+        document.getElementById("doTiltFB").innerHTML = Math.round(eventData.beta);
+        document.getElementById("doDirection").innerHTML = Math.round(eventData.alpha);
+    }, false);
+
+    window.addEventListener('devicemotion', function (eventData) {
+        document.getElementById("dmAcceleration").innerHTML = "[" +
+        round(eventData.acceleration.x) + ", " +
+        round(eventData.acceleration.y) + ", " +
+        round(eventData.acceleration.z) + "]";
+
+        document.getElementById("dmAccelerationIncludingGravity").innerHTML = "[" +
+        round(eventData.accelerationIncludingGravity.x) + ", " +
+        round(eventData.accelerationIncludingGravity.y) + ", " +
+        round(eventData.accelerationIncludingGravity.z) + "]";
+
+        document.getElementById("dmRotationRate").innerHTML = "[" +
+        round(eventData.rotationRate.alpha) + ", " +
+        round(eventData.rotationRate.beta) + ", " +
+        round(eventData.rotationRate.gamma) + "]";
+
+        document.getElementById("dmInterval").innerHTML = eventData.interval;
+
+    }, false);
+</script>
+
+
+</body>
+</html>
